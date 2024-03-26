@@ -7,10 +7,10 @@
   tasks:
 
     - name: Establish connection to ECR
-      shell: aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 469677591456.dkr.ecr.us-west-2.amazonaws.com
+      shell: aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin <repository url>
 
     - name: Pull the image from ECR
-      shell: docker pull 469677591456.dkr.ecr.us-west-2.amazonaws.com/udapeapeople:latest
+      shell: docker pull <repository url>/udapeapeople:latest
 
     - name: Run the container using the docker image
-      shell: docker run --name=springbootapp --detach 469677591456.dkr.ecr.us-west-2.amazonaws.com/udapeapeople:latest
+      shell: docker run --name=springbootapp --detach <repository url>/udapeapeople:latest
