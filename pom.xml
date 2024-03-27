@@ -17,25 +17,34 @@
 
 	<properties>
 		<java.version>17</java.version>
-    	<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+<!--    	<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>-->
 	</properties>
 	<repositories>
 		<repository>
 			<id>splunk-artifactory</id>
 			<name>Splunk Releases</name>
-			<!--     <url>https://splunk.artifactoryonline.com/artifactory/ext-releases-local</url>-->
-			<url>https://splunk.jfrog.io/splunk/ext-releases-local</url>
+			<url>https://splunk.artifactoryonline.com/artifactory/ext-releases-local</url>
+			<!--<url>https://splunk.jfrog.io/splunk/ext-releases-local</url>-->
 		</repository>
 	</repositories>
+
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-boot-starter-logging</artifactId>
+					<groupId>org.springframework.boot</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+
 <!--		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -112,18 +121,33 @@
 			<version>3.2.4</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
- 		               	<groupId>org.apache.maven.plugins</groupId>
-                		<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+<!--	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+&lt;!&ndash;			<plugin>
+ 		               	<groupId>org.apache.maven.plugins</groupId>
+                		<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>&ndash;&gt;
+		</plugins>
+	</build>-->
 
 </project>

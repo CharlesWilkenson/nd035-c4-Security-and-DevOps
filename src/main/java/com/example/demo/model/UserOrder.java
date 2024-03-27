@@ -6,7 +6,9 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 //@Table(name = "order")
@@ -39,7 +41,7 @@ public class UserOrder implements Serializable {
 
 	public static UserOrder createFromCart(Cart cart) {
 		UserOrder userOrder = new UserOrder();
-		userOrder.setItems(cart.getItems());
+		userOrder.setItems(new ArrayList<>(cart.getItems()));
 		userOrder.setTotal(cart.getTotal());
 		userOrder.setUser(cart.getUser());
 		return userOrder;
