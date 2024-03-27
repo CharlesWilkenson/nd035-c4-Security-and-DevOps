@@ -13,4 +13,4 @@
       shell: docker pull <repository url>/udapeapeople:latest
 
     - name: Run the container using the docker image
-      shell: docker run --name=springbootapp --detach <repository url>/udapeapeople:latest
+      shell: docker run --name=springbootapp -p 8081:8081 --detach <repository url>/udapeapeople:latest

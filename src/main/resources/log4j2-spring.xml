@@ -5,14 +5,15 @@
             <PatternLayout
                     pattern="%style{%d{ISO8601}} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{10}}{bright,yellow}: %msg%n%throwable" />
         </Console>
+
         <SplunkHttp
                 name="splunkhttp"
                 url="http://34.215.227.134:8088"
-                token="132d0299-d7bb-412a-ac57-3ad9fe3f2d27"
+                token="69a33a40-17fc-4d96-a0c8-68830db5b48a"
                 host="34.215.227.134"
+                source="http-event-logs"
                 index="udapeople_app_log"
                 type="raw"
-                source="http-event-logs"
                 sourcetype="log4j"
                 messageFormat="text"
                 disableCertificateValidation="true">
